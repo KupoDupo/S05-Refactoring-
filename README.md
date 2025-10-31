@@ -16,4 +16,6 @@ Primitive Obsession/Global Data: These aren't the same code smell but their stan
 
 Extract Function was applied to the setup() function and it fixed the Long Function, Duplicate Code, and Shotgun Surgery issues this code had. By splitting setup() into multiple functions the code become more readable, modular, and is more modifiable to any future programmers using this code.
 
-Replace Primitive with Object was applied to global variables c, a, b, and h to fix the Global Data and Primitive Obsession code smells. This makes the data in this code more secure (since it takes what used to be global data and encapsulates it into its own class) and helps the code be more usable down the line and understandable - since key variables/data points are stored in their own class. \
+Replace Primitive with Object was applied to global variables c, a, b, and h to fix the Global Data and Primitive Obsession code smells. This makes the data in this code more secure (since it takes what used to be global data and encapsulates it into its own class) and helps the code be more usable down the line and understandable - since key variables/data points are stored in their own class.
+
+Note to self: do checks for possible NULLS since its just good practice.
