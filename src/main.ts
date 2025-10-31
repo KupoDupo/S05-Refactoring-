@@ -1,12 +1,14 @@
-// --- Counter Logic (Domain Layer) ---
+// Counter Logic - have I introduced long class... maybe....
 class Counter {
-  constructor(display) {
+  value: number;
+  display: HTMLElement | null;
+  constructor(display: HTMLElement | null) {
     this.value = 0;
     this.display = display;
   }
 
   updateDisplay() {
-    this.display.textContent = this.value;
+    if (this.display) this.display.textContent = String(this.value);
     document.title = `Clicked ${this.value}`;
     document.body.style.backgroundColor = this.value % 2 ? "pink" : "lightblue";
   }
@@ -25,7 +27,7 @@ class Counter {
   }
 }
 
-// --- DOM Setup (Presentation Layer) ---
+// DOM Setup
 function createCounterUI() {
   document.body.innerHTML = `
     <h1>CMPM 121 Project</h1>
@@ -43,14 +45,13 @@ function createCounterUI() {
   };
 }
 
-// --- Application Initialization (Composition Root) ---
+// Setup reborn
 function setup() {
   const { display, incBtn, decBtn, resetBtn } = createCounterUI();
   const counter = new Counter(display);
-
-  incBtn.addEventListener("click", () => counter.increment());
-  decBtn.addEventListener("click", () => counter.decrement());
-  resetBtn.addEventListener("click", () => counter.reset());
+  if (incBtn) incBtn.addEventListener("click", () => counter.increment());
+  if (decBtn) decBtn.addEventListener("click", () => counter.decrement());
+  if (resetBtn) resetBtn.addEventListener("click", () => counter.reset());
 }
 
 setup();
